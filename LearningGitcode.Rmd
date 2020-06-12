@@ -1,13 +1,12 @@
 ---
-title: "LearningGit"
+title: "RMarkdown2GIt"
 author: "CAM"
-date: "01-06-2020"
+date: "13-06-2020"
 output: html_document
 ---
 
-```{r}
-git config ->global user.name "catamusrrif"
-git config ->global user.email ""
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## R Markdown
@@ -16,16 +15,39 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
+Now just the code
+
+```{r cars, eval=FALSE}
 summary(cars)
-```
+head(cars)
+``` 
+The mean car speed is 15.4 mph.
+
+##Add links and images 
+
+[Ocean](https://www.nationalgeographic.org/encyclopedia/ocean/) 
+
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure, include=FALSE}
+jpeg(file = "pressure.jpeg")
 plot(pressure)
+dev.off()
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+and now let’s add the figure from a saved file:
+
+```{r pressure plot from a file}
+knitr::include_graphics("pressure.jpeg") 
+
+```
+
+Other way to add images to the markdown... :) 
+
+![Luna](/Users/katta/OneDrive/Imágenes/Luna.jpg)
+
